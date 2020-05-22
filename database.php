@@ -9,7 +9,7 @@ class DaBa{
 			$this->Servername="localhost";
 			$this->Username="root";
 			$this->Password="";
-			$this->DBname="giftry-ia";
+			$this->DBname="sw2_sprint2";
 			$conn =new mysqli($this->Servername,$this->Username,$this->Password,$this->DBname);
 			return $conn;
 		}
@@ -66,7 +66,7 @@ class DaBa{
   			$result=$this->connect()->query($sql);
 		   	return $result;
 		 }
-    
+  
      public function UpdateProduct($pname,$p_new_name,$price,$pdesc,$pimg)
      {
 			$sql =  " Update  product set   name='$p_new_name' , price='$price' , product_desc='$pdesc' , img='$pimg'  where  name= '$pname' ";
@@ -76,7 +76,13 @@ class DaBa{
 		 }
     
        
- 
+   public function Deleteproduct($pname)
+    {
+        $sql = "DELETE  FROM product WHERE name='$pname'";
+            
+        	$result=$this->connect()->query($sql);
+		   	return $result;
+    }
     
      public function displayproudect()  
     {
@@ -95,12 +101,32 @@ class DaBa{
 
     }
     
-    public function Deleteproduct($pname)
-    {
-        $sql = "DELETE  FROM product WHERE name='$pname'";
-            
-        	$result=$this->connect()->query($sql);
+  
+    
+   
+    
+    
+    public function InsertFeedback($sp2_username,$sp2_info){
+			$sql =  " INSERT INTO  sprint2_feadback
+            (sp2_username,sp2_info) VALUES('$sp2_username','$sp2_info') ";
+  			$result=$this->connect()->query($sql);
 		   	return $result;
+		 }
+    public function view_feedback()  
+    {
+            $sql ="SELECT * FROM sprint2_feadback";
+            $result=$this->connect()->query($sql);
+			$numRows=$result->num_rows;
+			if($numRows > 0){
+				while ($row=$result->fetch_assoc()) {
+					$data[]=$row;
+				}
+			
+           
+                	return $data;
+			}
+      
+
     }
      
 

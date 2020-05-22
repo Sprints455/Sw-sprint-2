@@ -14,7 +14,7 @@ class Admin extends User{
 			$check=$DB->Insertproduct($pname,$price,$pdesc,$pimg);
     }
     
-           public function Updateproduct_A($pname,$p_new_name,$price,$pdesc,$pimg)
+    public function Updateproduct_A($pname,$p_new_name,$price,$pdesc,$pimg)
     {
             $this->pname=$pname;
 			$this->price=$price;
@@ -31,6 +31,12 @@ class Admin extends User{
 			$check=$DB->Deleteproduct($pname);
     }
     
+    
+      public function view_feedback_A(){
+			$DB = new  DaBa();
+			$data=$DB->view_feedback();
+            return $data;
+		}
 }
 
 //$A = new Admin();

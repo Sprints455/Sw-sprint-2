@@ -20,8 +20,17 @@ class User {
      public function displayproudect_u(){
 			$DB = new  DaBa();
 			$data=$DB->displayproudect();
-         return $data;
+            return $data;
 		}
+    
+    
+    
+    public function InsertFeedbacku($sp2_username,$sp2_info){
+			$this->sp2_username=$sp2_username;
+			$this->p2_info=$sp2_info;
+            $DB = new  DaBa();
+			$check=$DB->InsertFeedback($sp2_username,$sp2_info);
+		 }
    
     
     
