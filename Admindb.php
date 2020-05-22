@@ -50,7 +50,7 @@ if(isset($_POST['deleteproduct']))
       <link rel="stylesheet" href="css/all.css" />
       <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="css/admiindb.css" />
+      <link rel="stylesheet" href="css/admindb.css" />
   </head>
     <body>
    
@@ -77,7 +77,7 @@ if(isset($_POST['deleteproduct']))
                            name="pname" required placeholder="Product name" />
                    </div> 
                      <div class="position-relative ">
-                    <input class="form-control myinpt_log" type="number"
+                    <input id="addprice" class="form-control myinpt_log" type="number"
                            name="pprice" required placeholder="Product price" />
                    </div> 
                      <div class="position-relative">
@@ -95,7 +95,7 @@ if(isset($_POST['deleteproduct']))
                 
 
                    <div class="text-center py-3"> 
-               <button id="myBtn_log" class="mybtn_log btn btn-primary form
+               <button id="myBtn" class="mybtn_log btn btn-primary form
                        " type="submit" name="addproduct"> Add </button></div>
 
 
@@ -116,7 +116,7 @@ if(isset($_POST['deleteproduct']))
                            name="p_new_name" required placeholder="new Product name" />
                    </div>
                      <div class="position-relative ">
-                    <input class="form-control myinpt_log" type="number"
+                    <input id="updateprice" class="form-control myinpt_log" type="number"
                            name="pprice" required placeholder="New Product price" />
                    </div> 
                      <div class="position-relative">
@@ -134,7 +134,7 @@ if(isset($_POST['deleteproduct']))
                 
 
                    <div class="text-center py-3"> 
-               <button id="myBtn_log" class="mybtn_log btn btn-primary form
+               <button id="myBtn2" class="mybtn_log btn btn-primary form
                        " type="submit" name="UpdateProduct"> Update </button></div>
 
 
@@ -146,11 +146,11 @@ if(isset($_POST['deleteproduct']))
                     <h3 class="m-auto py-3 px-2 text-center text-primary">
                     Delete product
                     </h3>
-                   <div class="position-relative "> <input class="form-control myinpt_log" type="text" name="upname" required placeholder="product name" />
+                   <div id="name" class="position-relative "> <input class="form-control myinpt_log" type="text" name="upname" required placeholder="product name" />
                    </div> 
 
                    <div class="text-center py-4"> 
-                       <button id="myBtn_log" class="mybtn_log btn btn-primary form
+                       <button id="myBtn3" class="mybtn_log btn btn-primary form
                        " type="submit" name="deleteproduct"> Delete product </button></div>
 
 
@@ -162,21 +162,30 @@ if(isset($_POST['deleteproduct']))
                  
                  </div>
 </section>
-        
-        
-
-         <section class="py-2  px-5 border-top border-primary footeer ">
+         
+        <section class="">
+        <div class="text-center  text-primary mx-auto  w-100 ">
+       <a href="blog.php"><h3 class="mb-3 pb-4 See">  See Users Comments  </h3></a> 
+            
+             <section class="py-2  px-5 border-top border-primary footeer ">
             <span class="Copyright">Copyright © 2020 UIGRID | All Rights Reserved | 
-                <span class="Copyright-link"><a href="Admindb.php">www.thegiftery.com</a> </span>
+                <span class="Copyright-link"><a href="product.php">www.thegiftery.com</a> </span>
             </span>
        
         </section>
-
-        <script src="js/jquery-3.4.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="dist/bundle.js"></script>
-     
+        </div>
+        
+        
+            
+        
+         </section>
+        
+        
+       
+            <script src="js/jquery-3.3.1.min.js"></script>   
+            <script src="js/popper.min.js"></script>    
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/AdminDB12.js"></script>
      </body>
 </html>
 
