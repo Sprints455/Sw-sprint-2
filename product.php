@@ -1,6 +1,7 @@
 
 
 <?php
+
  session_start();
 error_reporting(0);
 
@@ -20,7 +21,72 @@ else
  $p=new User();
 
 
+ if(isset($_POST['Leave_Comment']))
+{
+      
+    $comment=$_POST['comment'];
+    $p->InsertFeedbacku($userprofile,$comment);
+
+}
+
+
+
+mysql_connect("localhost","root","") or die("could not find ");
+mysql_select_db("sw2_sprint2") or die("could not find ");
+
+if(isset($_POST['search_btn']))
+{
+    $search_text=$_POST['search_text'];
+    
+$query =mysql_query("SELECT * FROM product  WHERE name='$search_text'") or die("not found");
+    $result='';
+    $counter = mysql_num_rows($query);
+    if($counter>0)
+    {
+        
+        while($data =mysql_fetch_array($query))
+        {
+                $id=$data['id'];
+                $pname= $data['name'];
+                $pdesc= $data['product_desc'];
+                $pimg= $data['img'];
+                $price= $data['price'];
+            $result .=
+                '    
+                
+                <div class=" text-center mx-auto py-4 mt-3 search_containt" style="border-bottom: 2px solid black ; ">
+                
+                
+                <div class="col-md-4 my-2  m-auto"> 
+                
+            <i class="fa fa-times close" aria-hidden="true"></i>
+              <div class="card  mx-auto  " style="width: 20rem;">
+      
+                    <img name="c_img" src="images/'.$pimg.'" class="card-img-top img-fluid img" alt="'.$pimg.'">
+            <div class="card-body text-center">
+                        <h5 class="card-title cname " name="c_name" >'.$pname.'</h5>
+                        <p class="card-text cdesc" name="c_desc">'.$pdesc.'</p>
+                        <p class="card-text fa-2x cprice" name="c_price">'.$price.'.00EGP </p>
+               <button name="ADD_To_Cart" type="submit"  class="btn btn-primary cart"> ADD To Cart</button>
+            </div>
+      
+       
+            </div>
+            </div>
+            </div>
+            <br>
+            <br>' ;
+        }
+        
+    }
+    else
+    {
+        $result ="invalid data";
+    }
+      
+}
 ?>
+
 
 <html>
     <head>
@@ -28,9 +94,9 @@ else
         <link rel="stylesheet" href="css/all.css">
         <link rel="stylesheet" href="css/owl.carousel.min.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="css/index_style.css">
+        <link rel="stylesheet" href="css/index_style1.css">
         <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Pacifico&amp;display=swap" rel="stylesheet">
-
+        <link rel="stylesheet" href="css/cart.css">
      </head>
     
     <body>
@@ -72,7 +138,7 @@ else
          <div class="back">
             <a class="section_scroll scroll  ptup" href="#"><i class="fa fa-angle-up fa-4x fa-"></i></a>
          </div>
-           
+             
         <nav class="navbar navO navbar-expand-lg navbar-light bg-light py-0  "> 
            <span class="navbar-toggler-icon firstTog mx-3"></span> 
            
@@ -88,44 +154,78 @@ else
                 <i class="fa fa-search position-absolute "></i>
                  </form>
                   <a href="#"><i class="fab fa-opencart fa-2x ml-5 ico"></i></a> 
-             <a class="nav-link cartLink ml-2 mr-5" href="task.html">MyCart</a>
+             <a class="nav-link cartLink ml-2 mr-5" href="cart.php">MyCart</a>
              <a class="nav-link ico" href="#"> <i class="far fa-user ml-4 ico"></i></a>
              <a href="login1.php" class="signLink mr-1 pr-3 py-1 border-right sign">SignIn</a>
              <a class="nav-link ml-2 mr-5 join" href="register1.php"> JoinUs</a> 
              <a class="nav-link" href="#"> <i class="fa fa-cog fa-2x ml-5 pl-3 ico"></i></a>
              </div>
             </nav>
-        
-           
+     
           <section class="home" id="home">
-            <div class="container text-center">
+            <form  method="post" class="form-inline  float-right mt-4">
+      <input  name="search_text" class="form-control mr-2 mt-1" type="text" placeholder="Search" >
+   <input name="search_btn" type="submit" id="btn " value="search" class="btn searchbtn btn-primary mr-3 mt-1" />
+    </form>
+
+             <?php print("$result") ; ?> 
+
+            
+          
+              
+            <div class="container text-center py-5">
           <div class="row my-5  justify-content-center align-items-center  ">
                 <?php
               
                  $result= $p->displayproudect_u();
            foreach ((array) $result as $data) {
+               $id=$data['id'];
                 $pname= $data['name'];
                 $pdesc= $data['product_desc'];
                 $pimg= $data['img'];
                 $price= $data['price'];
-               
-               
+
+        
               echo '<div class="col-md-4 my-2 "> 
               <div class="card  mx-auto  " style="width: 18rem;">
-                     <img src="images/'.$pimg.'" class="card-img-top img-fluid" alt="'.$pimg.'">
-                     <div class="card-body text-center">
-                        <h5 class="card-title ">'.$pname.'</h5>
-                        <p class="card-text ">'.$pdesc.'</p>
-                        <p class="card-text fa-2x ">'.$price.'.00EGP </p>
-                        <a href="#" class="btn btn-primary ">Buy now</a>
-                      </div>
-                    </div></div>';
-             } ?>
+
+                    <img name="c_img" src="images/'.$pimg.'" class="card-img-top img-fluid img" alt="'.$pimg.'">
+            <div class="card-body text-center">
+                        <h5 class="card-title cname " name="c_name" >'.$pname.'</h5>
+                        <p class="card-text cdesc" name="c_desc">'.$pdesc.'</p>
+                        <p class="card-text fa-2x cprice" name="c_price">'.$price.'.00EGP </p>
+               <button name="ADD_To_Cart" type="submit"  class="btn btn-primary cart"> ADD To Cart</button>
+            </div>
+             
+      
+       
+            </div>
+            </div>' ;
+             }?>
+            
+
                 </div>
                   </div>
+              
+              
+              
+              <div class="feedback">
+        <div class="container my-5 text-center">
+           <h4>Leave a meaningful comment </h4>
+            <form method="post" class="py-5 my-5">
+     <textarea name="comment" id="textarea" class="form-control" type="text" 
+               placeholder="Enter Message "> </textarea> 
+                <button id="send" name="Leave_Comment" type="submit" class="btn btn-info mt-3"> Send</button>
+           </form>  
+       </div>
+                  
+        
+              
+              </div>
                    </section>
            
-                    <section class="final">
+           
+                    <section class="final"   >
             <div class="container-fluid">
                 <div class="row  justify-content-start">
                     <div class="col-md-3 pt-3">
@@ -269,15 +369,14 @@ else
             </div>
         </section>
         </div> 
-           
-     
-            <script src="js/jquery-3.3.1.min.js"></script>
-            <script src="js/owl.carousel.min.js"></script>    
-            <script src="js/popper.min.js"></script>    
-            <script src="js/bootstrap.min.js"></script>  
-            <script src="js/wow.js"></script> 
-            <script src="js/index1.js"></script>  
       
+     
+            <script src="js/jquery-3.3.1.min.js"></script>   
+            <script src="js/popper.min.js"></script>    
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/owl.carousel.min.js"></script> 
+            <script src="js/wow.js"></script> 
+            <script src="js/search1.js"></script>  
+   
     </body>
 </html>
-
