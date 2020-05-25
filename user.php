@@ -31,6 +31,14 @@ class User {
             $DB = new  DaBa();
 			$check=$DB->InsertFeedback($sp2_username,$sp2_info);
 		 }
+    
+    
+     public function Push_into_Cart_u($c_username,$c_pid){
+			$this->c_username=$c_username;
+			$this->c_pid=$c_pid;
+            $DB = new  DaBa();
+			$check=$DB->push_into_Cart($c_username,$c_pid);
+		 }
    
     
     
