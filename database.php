@@ -54,9 +54,8 @@ class DaBa{
                  
 					
     }
-    
-    
-    
+     
+		 
     
     public function Insertproduct($pname,$price,$pdesc,$pimg){
 			$sql =  " INSERT INTO  product
@@ -129,6 +128,75 @@ class DaBa{
 
     }
      
+    
+   public function getAllcart($c_username,$c_pid){
+                $sql="SELECT id , c_username , c_pid FROM   sprint2_cart WHERE c_username='$c_username' AND c_pid='$c_pid'";
+      
+                $result=$this->connect()->query($sql);
+                $numRows=$result->num_rows;
+                if($numRows > 0){
+                    while ($row=$result->fetch_assoc()) {
+                        $data[]=$row;
+                    }
+                    return $data;
+                }
+        else{
+            $data[]=[];
+            return $data;
+        }
+            }  
+    
+    
+    
+     public function push_into_Cart($c_username,$c_pid){
 
+         $datas=$this->getAllcart($c_username,$c_pid);
+          foreach ((array)$datas as $data) {
+                if($c_username != $data['c_username'] && $c_pid != $data['c_pid'])
+                {
+                    	
+                        $sql =  "INSERT INTO  sprint2_cart (c_username,c_pid) VALUES('$c_username','$c_pid') ";
+  			           $result=$this->connect()->query($sql);
+		   	           return $result;
+                     
+                }
+               
+              
+                                      
+               }
+			
+		 }
+     public function show_Cart_content($c_username)  
+    {
+        
+            $sql =" SELECT   * FROM product INNER JOIN sprint2_cart ON product.id=sprint2_cart.c_pid WHERE sprint2_cart.c_username='$c_username'";
+         
+            $result=$this->connect()->query($sql);
+			$numRows=$result->num_rows;
+			if($numRows > 0){
+				while ($row=$result->fetch_assoc()) {
+					$data[]=$row;
+				}
+			
+           
+                	return $data;
+			}
+      
+
+    }
+      public function remove_Cart_product($c_pid)
+    {
+        $sql = "DELETE  FROM sprint2_cart WHERE id='$c_pid'";
+            
+        	$result=$this->connect()->query($sql);
+		   	return $result;
+    }
+
+    
+    
+    
+    
+    
+    
 }
 ?>
