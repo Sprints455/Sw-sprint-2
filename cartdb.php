@@ -1,7 +1,7 @@
 <?php
 
  session_start();
-//error_reporting(0);
+error_reporting(0);
 
 $userprofile=	$_SESSION['username'];
 if($userprofile == true)
