@@ -94,8 +94,6 @@ else
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                  <form class="position-relative mx-3 from">
-                <input class="form-control inp" id="searchInp" type="search">
-                <i class="fa fa-search position-absolute "></i>
                  </form>
                   <a href="#"><i class="fab fa-opencart fa-2x ml-5 ico"></i></a> 
              <a class="nav-link cartLink ml-2 mr-5" href="cartdb.php">MyCart</a>
@@ -307,7 +305,7 @@ else
             <script src="js/bootstrap.min.js"></script>
             <script src="js/owl.carousel.min.js"></script> 
             <script src="js/wow.js"></script> 
-            <script src="pro11.js"></script> 
+            <script src="js/search1.js"></script> 
     </body>
 </html>
 

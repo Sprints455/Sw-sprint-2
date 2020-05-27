@@ -2,8 +2,8 @@
 include 'database.php';
 
 class cart {
-        private $username;
-		private $pc_id;
+        private $c_username;
+		private $c_pid;
 
 public function show_Cart_content_u($c_username) {
 			$DB = new  DaBa();

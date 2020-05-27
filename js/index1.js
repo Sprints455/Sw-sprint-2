@@ -42,15 +42,7 @@ $(".firstTog").click(function(){
     });
    w++;
 }
-else if(w != 1){
-    $(".hiddenList ul").fadeOut(800 ,function(){
-     $(".hiddenList").animate({width:"0%"},1000)
-        $(".webSite").animate({left:"0%"},1000,function(){ $("body").css("overflow","auto")
-        $(".back").show(500);
-    })
-       
-     w=1;
-    });
+
 }
 })
 $('.owl-carousel').owlCarousel({

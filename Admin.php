@@ -37,16 +37,32 @@ class Admin extends User{
 			$data=$DB->view_feedback();
             return $data;
 		}
+    
+    
+     private static $object ;
+    
+    
+   private function __construct(){
+       
+   }
+    public static function get_instance(){
+        if(!self::$object)
+            self::$object = new static();
+        return  self::$object ; 
+    }
+    public function set($key ,$value)
+    {
+        $this->$key=$value;
+    }
+    public function get($key)
+    {
+       return $this->$key;
+    }
 }
 
 //$A = new Admin();
 
-//$A ->addproduct_A('dubai','hytr',"jff","h");
-//$A ->updateeplace(15,'dubai','kkkkkkkk',"jff","h");
-//$A ->Deleteeplace(15);
-//$A ->searchplacess('dubai');
-//$A ->displayplaces("h");
-// $A ->showalluser();
+
 
 
 

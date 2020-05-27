@@ -12,7 +12,7 @@ else
     	header('location:login1.php');
 }
 include 'Admin.php';
-$A = new Admin();
+$A =  Admin::get_instance();
 if(isset($_POST['addproduct']))
 {
     

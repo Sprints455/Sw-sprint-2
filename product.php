@@ -94,9 +94,8 @@ $query =mysql_query("SELECT * FROM product  WHERE name='$search_text'") or die("
         <link rel="stylesheet" href="css/all.css">
         <link rel="stylesheet" href="css/owl.carousel.min.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="css/index_style1.css">
+        <link rel="stylesheet" href="css/index_style.css">
         <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Pacifico&amp;display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="css/cart.css">
      </head>
     
     <body>
@@ -150,8 +149,7 @@ $query =mysql_query("SELECT * FROM product  WHERE name='$search_text'") or die("
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
                  <form class="position-relative mx-3 from">
-                <input class="form-control inp" id="searchInp" type="search">
-                <i class="fa fa-search position-absolute "></i>
+               
                  </form>
                   <a href="#"><i class="fab fa-opencart fa-2x ml-5 ico"></i></a> 
              <a class="nav-link cartLink ml-2 mr-5" href="cartdb.php">MyCart</a>
@@ -377,7 +375,6 @@ $query =mysql_query("SELECT * FROM product  WHERE name='$search_text'") or die("
             <script src="js/popper.min.js"></script>    
             <script src="js/bootstrap.min.js"></script>
             <script src="js/owl.carousel.min.js"></script> 
-            <script src="js/wow.js"></script> 
             <script src="js/search1.js"></script>  
    
     </body>
