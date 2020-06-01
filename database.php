@@ -4,6 +4,26 @@ class DaBa{
 		public $Username;
 		public $Password;
 		public $DBname;
+    
+     private static $object ;
+    
+    
+   private function __construct(){
+       
+   }
+    public static function get_instance(){
+        if(!self::$object)
+            self::$object = new static();
+        return  self::$object ; 
+    }
+    public function set($key ,$value)
+    {
+        $this->$key=$value;
+    }
+    public function get($key)
+    {
+       return $this->$key;
+    }
 
 		protected function connect(){
 			$this->Servername="localhost";

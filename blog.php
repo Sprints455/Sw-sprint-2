@@ -16,7 +16,7 @@ else
 
  include "Admin.php";
 
-$A = Admin::get_instance();;
+$A = new Admin();
  
 ?>
 <html> 
