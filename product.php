@@ -31,20 +31,20 @@ else
 
 
 
-mysql_connect("localhost","root","") or die("could not find ");
-mysql_select_db("sw2_sprint2") or die("could not find ");
+$conection=mysqli_connect("localhost","root","","sw2_sprint2") or die("could not find ");
+
 
 if(isset($_POST['search_btn']))
 {
     $search_text=$_POST['search_text'];
-    
-$query =mysql_query("SELECT * FROM product  WHERE name='$search_text'") or die("not found");
+    $sql="SELECT * FROM product  WHERE name='$search_text'";
+$query =mysqli_query($conection,$sql) or die("not found");
     $result='';
-    $counter = mysql_num_rows($query);
+    $counter = mysqli_num_rows($query);
     if($counter>0)
     {
         
-        while($data =mysql_fetch_array($query))
+        while($data =mysqli_fetch_assoc($query))
         {
                 $id=$data['id'];
                 $pname= $data['name'];
