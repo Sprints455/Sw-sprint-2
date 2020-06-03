@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2020 at 03:41 PM
+-- Generation Time: Jun 02, 2020 at 11:07 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 5.6.40
 
@@ -42,7 +42,7 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`id`, `name`, `price`, `product_desc`, `img`) VALUES
 (3, 'Xiaomi Redmi 8A', 1633, '                 Xiaomi Redmi 8A Dual Sim, 32 GB, 2 GB RAM, 4G LTE - Midnight Black        ', 'item_XL_78508732_eb16d4828bf39.jpg'),
-(4, 'Nokia', 1599, '               Nokia 2.2 Ta-1188 Dual Sim - 32 GB, 3 GB Ram, 4G LTE, Steel          ', 'item_XL_55273096_2e24c650c4ce7.jpg');
+(4, 'Nokia', 1600, '           Nokia 2.2 Ta-1188 Dual Sim - 32 GB, 3 GB Ram, 4G LTE, Steel              ', 'item_XL_55273096_2e24c650c4ce7.jpg');
 
 -- --------------------------------------------------------
 
@@ -116,7 +116,8 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `address`) VALUES
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `sprint2_cart`
@@ -149,7 +150,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `sprint2_cart`
